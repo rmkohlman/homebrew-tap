@@ -55,7 +55,9 @@ class Dvm < Formula
       end
     end
 
-    generate_completions_from_executable(bin/"dvm", "completion")
+    # Skip auto-completion generation - users can generate manually if needed:
+    #   dvm completion zsh > $(brew --prefix)/share/zsh/site-functions/_dvm
+    #   dvm completion bash > $(brew --prefix)/etc/bash_completion.d/dvm
   end
 
   def caveats
@@ -64,7 +66,12 @@ class Dvm < Formula
         dvm admin init
         dvm create project myproject --from-cwd
 
-      Shell completions have been installed.
+      For shell completions, run:
+        # Zsh
+        dvm completion zsh > $(brew --prefix)/share/zsh/site-functions/_dvm
+        
+        # Bash  
+        dvm completion bash > $(brew --prefix)/etc/bash_completion.d/dvm
     EOS
   end
 
