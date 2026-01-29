@@ -2,11 +2,12 @@
 # frozen_string_literal: true
 
 class Dvm < Formula
-  desc "DevOpsMaestro (dvm) - CLI tool for managing development workspaces"
+  desc "DevOpsMaestro (dvm) - kubectl-style CLI for containerized dev environments"
   homepage "https://github.com/rmkohlman/devopsmaestro"
   version "0.3.1"
   license "GPL-3.0"
 
+  # Stable release binaries
   on_macos do
     on_arm do
       url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.3.1/dvm-darwin-arm64"
@@ -29,18 +30,32 @@ class Dvm < Formula
     end
   end
 
+  # Development/HEAD version - builds from source
+  head "https://github.com/rmkohlman/devopsmaestro.git", branch: "main"
+
+  depends_on "go" => :build if build.head?
+
   def install
-    if OS.mac?
-      if Hardware::CPU.arm?
-        bin.install "dvm-darwin-arm64" => "dvm"
-      else
-        bin.install "dvm-darwin-amd64" => "dvm"
-      end
-    elsif OS.linux?
-      if Hardware::CPU.arm?
-        bin.install "dvm-linux-arm64" => "dvm"
-      else
-        bin.install "dvm-linux-amd64" => "dvm"
+    if build.head?
+      # Build from source for HEAD installs
+      system "go", "build",
+             "-ldflags", "-s -w -X main.Version=HEAD-#{version} -X main.Commit=#{`git rev-parse --short HEAD`.strip} -X main.BuildTime=#{Time.now.utc.iso8601}",
+             "-o", bin/"dvm",
+             "."
+    else
+      # Install pre-built binary for stable releases
+      if OS.mac?
+        if Hardware::CPU.arm?
+          bin.install "dvm-darwin-arm64" => "dvm"
+        else
+          bin.install "dvm-darwin-amd64" => "dvm"
+        end
+      elsif OS.linux?
+        if Hardware::CPU.arm?
+          bin.install "dvm-linux-arm64" => "dvm"
+        else
+          bin.install "dvm-linux-amd64" => "dvm"
+        end
       end
     end
 
@@ -48,7 +63,21 @@ class Dvm < Formula
     generate_completions_from_executable(bin/"dvm", "completion")
   end
 
+  def caveats
+    <<~EOS
+      To get started:
+        dvm admin init
+        dvm create project myproject --from-cwd
+
+      Shell completions have been installed.
+      
+      For the latest development version, reinstall with:
+        brew install --HEAD rmkohlman/tap/dvm
+    EOS
+  end
+
   test do
-    system "#{bin}/dvm", "version"
+    assert_match "v#{version}", shell_output("#{bin}/dvm version") unless build.head?
+    assert_match "dvm", shell_output("#{bin}/dvm --help")
   end
 end
