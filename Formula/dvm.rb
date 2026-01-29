@@ -36,6 +36,9 @@ class Dvm < Formula
 
   head "https://github.com/rmkohlman/devopsmaestro.git", branch: "main"
 
+  # Both formulas install the same 'dvm' binary
+  conflicts_with "devopsmaestro", because: "both install the dvm binary"
+
   depends_on "go" => :build if build.head?
 
   def install
