@@ -1,6 +1,11 @@
 # typed: false
 # frozen_string_literal: true
 
+# Alias formula - redirects to devopsmaestro
+# Users can install with either:
+#   brew install rmkohlman/tap/devopsmaestro
+#   brew install rmkohlman/tap/dvm
+
 class Dvm < Formula
   desc "DevOpsMaestro (dvm) - kubectl-style CLI for containerized dev environments"
   homepage "https://github.com/rmkohlman/devopsmaestro"
@@ -54,14 +59,13 @@ class Dvm < Formula
         end
       end
     end
-
-    # Skip auto-completion generation - users can generate manually if needed:
-    #   dvm completion zsh > $(brew --prefix)/share/zsh/site-functions/_dvm
-    #   dvm completion bash > $(brew --prefix)/etc/bash_completion.d/dvm
   end
 
   def caveats
     <<~EOS
+      Note: This formula is also available as 'devopsmaestro':
+        brew install rmkohlman/tap/devopsmaestro
+
       To get started:
         dvm admin init
         dvm create project myproject --from-cwd
