@@ -41,9 +41,17 @@ class Dvm < Formula
              "."
     else
       if OS.mac?
-        bin.install Hardware::CPU.arm? ? "dvm-darwin-arm64" => "dvm" : "dvm-darwin-amd64" => "dvm"
+        if Hardware::CPU.arm?
+          bin.install "dvm-darwin-arm64" => "dvm"
+        else
+          bin.install "dvm-darwin-amd64" => "dvm"
+        end
       elsif OS.linux?
-        bin.install Hardware::CPU.arm? ? "dvm-linux-arm64" => "dvm" : "dvm-linux-amd64" => "dvm"
+        if Hardware::CPU.arm?
+          bin.install "dvm-linux-arm64" => "dvm"
+        else
+          bin.install "dvm-linux-amd64" => "dvm"
+        end
       end
     end
 
