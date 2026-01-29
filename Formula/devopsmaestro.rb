@@ -42,6 +42,8 @@ class Devopsmaestro < Formula
              "-ldflags", "-s -w -X main.Version=HEAD -X main.Commit=#{`git rev-parse --short HEAD`.strip} -X main.BuildTime=#{Time.now.utc.iso8601}",
              "-o", bin/"dvm",
              "."
+      # Generate completions when building from source (not sandboxed)
+      generate_completions_from_executable(bin/"dvm", "completion")
     else
       if OS.mac?
         if Hardware::CPU.arm?
@@ -56,6 +58,8 @@ class Devopsmaestro < Formula
           bin.install "dvm-linux-amd64" => "dvm"
         end
       end
+      # Note: Shell completions cannot be auto-generated for pre-built binaries
+      # due to macOS sandbox restrictions. Users should generate them manually.
     end
   end
 
@@ -65,16 +69,20 @@ class Devopsmaestro < Formula
         dvm admin init
         dvm create project myproject --from-cwd
 
-      For shell completions, run:
-        # Zsh
-        dvm completion zsh > $(brew --prefix)/share/zsh/site-functions/_dvm
-        
-        # Bash  
-        dvm completion bash > $(brew --prefix)/etc/bash_completion.d/dvm
+      Shell completions (recommended):
+        # Zsh (add to ~/.zshrc or run once)
+        dvm completion zsh > #{HOMEBREW_PREFIX}/share/zsh/site-functions/_dvm
+
+        # Bash
+        dvm completion bash > #{HOMEBREW_PREFIX}/etc/bash_completion.d/dvm
+
+        # Fish
+        dvm completion fish > ~/.config/fish/completions/dvm.fish
     EOS
   end
 
   test do
     assert_match "dvm", shell_output("#{bin}/dvm --help")
+    assert_match version.to_s, shell_output("#{bin}/dvm version")
   end
 end

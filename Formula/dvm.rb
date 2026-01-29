@@ -1,7 +1,6 @@
 # typed: false
 # frozen_string_literal: true
 
-# Alias formula - redirects to devopsmaestro
 # Users can install with either:
 #   brew install rmkohlman/tap/devopsmaestro
 #   brew install rmkohlman/tap/dvm
@@ -47,6 +46,8 @@ class Dvm < Formula
              "-ldflags", "-s -w -X main.Version=HEAD -X main.Commit=#{`git rev-parse --short HEAD`.strip} -X main.BuildTime=#{Time.now.utc.iso8601}",
              "-o", bin/"dvm",
              "."
+      # Generate completions when building from source (not sandboxed)
+      generate_completions_from_executable(bin/"dvm", "completion")
     else
       if OS.mac?
         if Hardware::CPU.arm?
@@ -61,28 +62,33 @@ class Dvm < Formula
           bin.install "dvm-linux-amd64" => "dvm"
         end
       end
+      # Note: Shell completions cannot be auto-generated for pre-built binaries
+      # due to macOS sandbox restrictions. Users should generate them manually.
     end
   end
 
   def caveats
     <<~EOS
-      Note: This formula is also available as 'devopsmaestro':
-        brew install rmkohlman/tap/devopsmaestro
+      Also available as: brew install rmkohlman/tap/devopsmaestro
 
       To get started:
         dvm admin init
         dvm create project myproject --from-cwd
 
-      For shell completions, run:
-        # Zsh
-        dvm completion zsh > $(brew --prefix)/share/zsh/site-functions/_dvm
-        
-        # Bash  
-        dvm completion bash > $(brew --prefix)/etc/bash_completion.d/dvm
+      Shell completions (recommended):
+        # Zsh (add to ~/.zshrc or run once)
+        dvm completion zsh > #{HOMEBREW_PREFIX}/share/zsh/site-functions/_dvm
+
+        # Bash
+        dvm completion bash > #{HOMEBREW_PREFIX}/etc/bash_completion.d/dvm
+
+        # Fish
+        dvm completion fish > ~/.config/fish/completions/dvm.fish
     EOS
   end
 
   test do
     assert_match "dvm", shell_output("#{bin}/dvm --help")
+    assert_match version.to_s, shell_output("#{bin}/dvm version")
   end
 end
