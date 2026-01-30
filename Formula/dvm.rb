@@ -8,30 +8,32 @@
 class Dvm < Formula
   desc "DevOpsMaestro (dvm) - kubectl-style CLI for containerized dev environments"
   homepage "https://github.com/rmkohlman/devopsmaestro"
-  version "0.3.2"
+  version "0.3.3"
   license "GPL-3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.3.2/dvm-darwin-arm64"
-      sha256 "69ff95ecad57ae0f30ea48291caa7df627824fe01c26516e043f7edd62ad08f8"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.3.3/devopsmaestro_0.3.3_darwin_arm64.tar.gz"
+      sha256 "b9d5117c5ab4cdff2e777907fd0f240e155a43c0e1b02d9767d934e5515f3a13"
     end
-    on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.3.2/dvm-darwin-amd64"
-      sha256 "61c84b28926f83125a9fb435874511f64e1254157b32ef9d580508636357892e"
-    end
+    # Note: darwin/amd64 not currently built - requires cross-compilation
+    # on_intel do
+    #   url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.3.3/devopsmaestro_0.3.3_darwin_amd64.tar.gz"
+    #   sha256 "PLACEHOLDER_DARWIN_AMD64"
+    # end
   end
 
-  on_linux do
-    on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.3.2/dvm-linux-arm64"
-      sha256 "1b71d9800e40b17989055f316dad5ddad4ee7d3e7f142d9252242f293934f2ca"
-    end
-    on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.3.2/dvm-linux-amd64"
-      sha256 "e70869cfae8f77ebe2bf43920fd12354927ac13db2decb57c7a3cb31d779f27f"
-    end
-  end
+  # Note: Linux builds not currently available - requires cross-compilation toolchains
+  # on_linux do
+  #   on_arm do
+  #     url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.3.3/devopsmaestro_0.3.3_linux_arm64.tar.gz"
+  #     sha256 "PLACEHOLDER_LINUX_ARM64"
+  #   end
+  #   on_intel do
+  #     url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.3.3/devopsmaestro_0.3.3_linux_amd64.tar.gz"
+  #     sha256 "PLACEHOLDER_LINUX_AMD64"
+  #   end
+  # end
 
   head "https://github.com/rmkohlman/devopsmaestro.git", branch: "main"
 
@@ -49,21 +51,13 @@ class Dvm < Formula
       # Generate completions when building from source (not sandboxed)
       generate_completions_from_executable(bin/"dvm", "completion")
     else
-      if OS.mac?
-        if Hardware::CPU.arm?
-          bin.install "dvm-darwin-arm64" => "dvm"
-        else
-          bin.install "dvm-darwin-amd64" => "dvm"
-        end
-      elsif OS.linux?
-        if Hardware::CPU.arm?
-          bin.install "dvm-linux-arm64" => "dvm"
-        else
-          bin.install "dvm-linux-amd64" => "dvm"
-        end
-      end
-      # Note: Shell completions cannot be auto-generated for pre-built binaries
-      # due to macOS sandbox restrictions. Users should generate them manually.
+      # Install binary from archive
+      bin.install "dvm"
+
+      # Install pre-generated completions from archive
+      bash_completion.install "completions/dvm.bash" => "dvm"
+      zsh_completion.install "completions/_dvm"
+      fish_completion.install "completions/dvm.fish"
     end
   end
 
@@ -75,15 +69,8 @@ class Dvm < Formula
         dvm admin init
         dvm create project myproject --from-cwd
 
-      Shell completions (recommended):
-        # Zsh (add to ~/.zshrc or run once)
-        dvm completion zsh > #{HOMEBREW_PREFIX}/share/zsh/site-functions/_dvm
-
-        # Bash
-        dvm completion bash > #{HOMEBREW_PREFIX}/etc/bash_completion.d/dvm
-
-        # Fish
-        dvm completion fish > ~/.config/fish/completions/dvm.fish
+      Shell completions have been installed automatically for bash, zsh, and fish.
+      Restart your shell or source your profile to enable them.
     EOS
   end
 
