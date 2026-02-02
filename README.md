@@ -1,6 +1,13 @@
 # Homebrew Tap for DevOpsMaestro
 
-This is the official Homebrew tap for [DevOpsMaestro](https://github.com/rmkohlman/devopsmaestro) and related tools.
+This is the official Homebrew tap for [DevOpsMaestro](https://github.com/rmkohlman/devopsmaestro) tools.
+
+## Available Formulas
+
+| Formula | Binary | Description | Version |
+|---------|--------|-------------|---------|
+| **devopsmaestro** | `dvm` | kubectl-style CLI for containerized dev environments | 0.3.3 |
+| **nvimops** | `nvp` | DevOps-style Neovim plugin and theme manager | 0.5.0 |
 
 ## Installation
 
@@ -8,30 +15,66 @@ This is the official Homebrew tap for [DevOpsMaestro](https://github.com/rmkohlm
 # Add the tap
 brew tap rmkohlman/tap
 
-# Install dvm
-brew install dvm
+# Install DevOpsMaestro (dvm) - workspace/container management
+brew install rmkohlman/tap/devopsmaestro
 
-# Verify installation
+# Install NvimOps (nvp) - Neovim plugin/theme management
+brew install rmkohlman/tap/nvimops
+
+# Verify installations
 dvm version
+nvp version
+```
+
+## Quick Start
+
+### NvimOps (nvp) - Neovim Plugin & Theme Manager
+
+```bash
+# Initialize nvp
+nvp init
+
+# Browse and install plugins from library
+nvp library list
+nvp library install telescope
+
+# Browse and install themes
+nvp theme library list
+nvp theme library install tokyonight-custom --use
+
+# Generate Lua files for Neovim
+nvp generate
+
+# Files are created in ~/.config/nvim/lua/
+```
+
+### DevOpsMaestro (dvm) - Workspace Manager
+
+```bash
+# Initialize dvm
+dvm admin init
+
+# Create a workspace from current directory
+dvm create project myproject --from-cwd
+
+# List workspaces
+dvm get workspaces
 ```
 
 ## Upgrading
 
 ```bash
-# Upgrade to the latest version
-brew upgrade dvm
+# Upgrade specific formula
+brew upgrade rmkohlman/tap/nvimops
+brew upgrade rmkohlman/tap/devopsmaestro
 
-# Or upgrade all your packages
+# Or upgrade all packages
 brew upgrade
 ```
 
-## Available Formulas
-
-- **dvm** - DevOpsMaestro CLI tool for managing development workspaces
-
 ## Shell Completion
 
-Shell completion is automatically installed with the formula. Restart your shell or source your config:
+Shell completions (bash, zsh, fish) are automatically installed with each formula. Restart your shell or source your config:
 
 ```bash
 # Zsh
@@ -46,6 +89,7 @@ source ~/.bashrc
 - [DevOpsMaestro Documentation](https://github.com/rmkohlman/devopsmaestro#readme)
 - [Release Notes](https://github.com/rmkohlman/devopsmaestro/releases)
 - [Shell Completion Guide](https://github.com/rmkohlman/devopsmaestro/blob/main/docs/SHELL_COMPLETION.md)
+- [NvimOps Test Plan](https://github.com/rmkohlman/devopsmaestro/blob/main/NVIMOPS_TEST_PLAN.md)
 
 ## Support
 
