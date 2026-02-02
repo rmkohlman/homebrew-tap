@@ -1,8 +1,12 @@
 # typed: false
 # frozen_string_literal: true
 
-class Nvp < Formula
-  desc "nvp (NvimOps) - DevOps-style Neovim plugin and theme manager"
+# NvimOps - DevOps-style Neovim plugin and theme manager
+# Install with: brew install rmkohlman/tap/nvimops
+# Binary name: nvp
+
+class Nvimops < Formula
+  desc "NvimOps (nvp) - DevOps-style Neovim plugin and theme manager"
   homepage "https://github.com/rmkohlman/devopsmaestro"
   version "0.5.0"
   license "GPL-3.0"
@@ -53,17 +57,20 @@ class Nvp < Formula
 
   def caveats
     <<~EOS
-      nvp (NvimOps) - DevOps-style Neovim plugin and theme manager
+      NvimOps (nvp) - DevOps-style Neovim plugin and theme manager
 
-      To get started:
+      Quick Start:
         nvp init                        # Initialize plugin store
-        nvp library list                # Browse available plugins
+        nvp library list                # Browse 16+ available plugins
         nvp library install telescope   # Install from library
-        nvp theme library list          # Browse available themes
+        nvp theme library list          # Browse 8 available themes
         nvp theme library install tokyonight-night --use
         nvp generate                    # Generate Lua files
 
-      Generated files go to: ~/.config/nvim/lua/plugins/nvp/
+      Generated files: ~/.config/nvim/lua/plugins/nvp/
+      Theme files:     ~/.config/nvim/lua/theme/
+
+      Documentation: https://github.com/rmkohlman/devopsmaestro#nvimops
 
       Shell completions have been installed for bash, zsh, and fish.
       Restart your shell or source your profile to enable them.
