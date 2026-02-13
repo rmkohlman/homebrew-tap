@@ -4,14 +4,19 @@
 class Devopsmaestro < Formula
   desc "DevOpsMaestro (dvm) - kubectl-style CLI for containerized dev environments"
   homepage "https://github.com/rmkohlman/devopsmaestro"
-  version "0.7.0"
+  version "0.8.1"
   license "GPL-3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.7.0/devopsmaestro_0.7.0_darwin_arm64.tar.gz"
-      sha256 "3d28982d34c27d479ffda11367fcfe3ed2a5ba157d20f53e77ec58326ef902f8"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.1/devopsmaestro_0.8.1_darwin_arm64.tar.gz"
+      sha256 "dd50fd0604d9e3e598bd2e94c6592743d264707a5221d466b55932556258dfda"
     end
+    # Note: darwin/amd64 build coming in future releases
+    # on_intel do
+    #   url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.1/devopsmaestro_0.8.1_darwin_amd64.tar.gz"
+    #   sha256 "PLACEHOLDER"
+    # end
   end
 
   head "https://github.com/rmkohlman/devopsmaestro.git", branch: "main"
@@ -39,7 +44,7 @@ class Devopsmaestro < Formula
     <<~EOS
       To get started:
         dvm admin init
-        dvm create project myproject --from-cwd
+        dvm create app myapp --from-cwd
 
       Shell completions have been installed automatically for bash, zsh, and fish.
       Restart your shell or source your profile to enable them.

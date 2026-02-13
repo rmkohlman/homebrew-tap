@@ -8,28 +8,28 @@
 class Nvimops < Formula
   desc "NvimOps (nvp) - DevOps-style Neovim plugin and theme manager"
   homepage "https://github.com/rmkohlman/devopsmaestro"
-  version "0.5.1"
+  version "0.8.1"
   license "GPL-3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.5.1/nvp_0.5.1_darwin_arm64.tar.gz"
-      sha256 "f14a477d10cff333d657565368fd730a9e45eeacc765bf778f57525995e89c15"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.1/nvp_0.8.1_darwin_arm64.tar.gz"
+      sha256 "4c052f50945486e6270ac12622affa92b94d518609d0c3db3c963386e0384e52"
     end
     on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.5.1/nvp_0.5.1_darwin_amd64.tar.gz"
-      sha256 "9e3889cb463d3b8839ab6e38d0d109b5ce30ca7d4c50b07e82b48afb03a7df59"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.1/nvp_0.8.1_darwin_amd64.tar.gz"
+      sha256 "f43be4a5c7987ca49532503ea814274b4c343fc38a3f71a6c218b5ce0de142ae"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.5.1/nvp_0.5.1_linux_arm64.tar.gz"
-      sha256 "4a4ac75e25824cce34cc5920529e8511a93e11369e41bbb18b8b109bf4ec89ae"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.1/nvp_0.8.1_linux_arm64.tar.gz"
+      sha256 "6357bb851835ecd86dd0e8fcc923ccdab65d6dfbd1c801715bb4a0af1fa237f0"
     end
     on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.5.1/nvp_0.5.1_linux_amd64.tar.gz"
-      sha256 "229e268895b653b533444580b01b2093746ada3acc83373ab279c464f8b4b607"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.1/nvp_0.8.1_linux_amd64.tar.gz"
+      sha256 "5c76d4680cb519ce432bd402bb1338369b1f29b74220a7f5ae73b22d006c2929"
     end
   end
 
@@ -45,10 +45,7 @@ class Nvimops < Formula
              "./cmd/nvp/"
       generate_completions_from_executable(bin/"nvp", "completion")
     else
-      # Install binary from archive
       bin.install "nvp"
-
-      # Install pre-generated completions from archive
       bash_completion.install "completions/nvp.bash" => "nvp"
       zsh_completion.install "completions/_nvp"
       fish_completion.install "completions/nvp.fish"
@@ -61,9 +58,9 @@ class Nvimops < Formula
 
       Quick Start:
         nvp init                        # Initialize plugin store
-        nvp library list                # Browse 16+ available plugins
+        nvp library list                # Browse available plugins
         nvp library install telescope   # Install from library
-        nvp theme library list          # Browse 8 available themes
+        nvp theme library list          # Browse available themes
         nvp theme library install tokyonight-night --use
         nvp generate                    # Generate Lua files
 
