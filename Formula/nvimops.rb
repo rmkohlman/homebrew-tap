@@ -1,35 +1,31 @@
 # typed: false
 # frozen_string_literal: true
 
-# NvimOps - DevOps-style Neovim plugin and theme manager
-# Install with: brew install rmkohlman/tap/nvimops
-# Binary name: nvp
-
 class Nvimops < Formula
   desc "NvimOps (nvp) - DevOps-style Neovim plugin and theme manager"
   homepage "https://github.com/rmkohlman/devopsmaestro"
-  version "0.8.2"
+  version "0.9.0"
   license "GPL-3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.2/nvp_0.8.2_darwin_arm64.tar.gz"
-      sha256 "68b00ac65264fc012881a4707fdfb9a337ed2cd67939a2a5557a2362ccd00230"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.9.0/nvp_0.9.0_darwin_arm64.tar.gz"
+      sha256 "56e701058a4eb0b630d2e0769c7334ee6fb108f862376a4ff12cfe96083d519e"
     end
     on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.2/nvp_0.8.2_darwin_amd64.tar.gz"
-      sha256 "d747e8152090af117dc882ed0d922d9900d3197300f66f687eedc4baf9328f9e"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.9.0/nvp_0.9.0_darwin_amd64.tar.gz"
+      sha256 "4f490e1fc0ba5831e6694ee8da00a35fd2058cee5dc9658022f69dc8340fe700"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.2/nvp_0.8.2_linux_arm64.tar.gz"
-      sha256 "b3ab3d627cdb0198f0856e7bbb8165027002e96dadec087ac6093e49dd42a688"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.9.0/nvp_0.9.0_linux_arm64.tar.gz"
+      sha256 "feaa7e6f9c796a521eef4d5f2523378b970fd2a0f06cf04dec5df61a9b8ba337"
     end
     on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.8.2/nvp_0.8.2_linux_amd64.tar.gz"
-      sha256 "603b1e8b3880878ed3ff95009adb304c6afed9097342d1d13850b67c54b5bf52"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.9.0/nvp_0.9.0_linux_amd64.tar.gz"
+      sha256 "4cf66bb70ec550798aebfff0ff59bfb69baaa29400bfb00c485820c8e41c1cc9"
     end
   end
 
