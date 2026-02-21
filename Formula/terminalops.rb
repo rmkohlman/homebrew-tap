@@ -4,17 +4,17 @@
 class Terminalops < Formula
   desc "TerminalOps (dvt) - DevOps-style terminal configuration management"
   homepage "https://github.com/rmkohlman/devopsmaestro"
-  version "0.18.7"
+  version "0.18.8"
   license "GPL-3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.18.7/terminalops_0.18.7_darwin_arm64.tar.gz"
-      sha256 "46960c37bd7af30ce001d12d3603e00adde515f9a762adec291bdfe1b8d3022c"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.18.8/terminalops_0.18.8_darwin_arm64.tar.gz"
+      sha256 "0edecda4eaee70019dfe168436d7fac8424ab320b4ef037e8b7ec5242d374002"
     end
     on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.18.7/terminalops_0.18.7_darwin_amd64.tar.gz"
-      sha256 "f46af39217ff49d6a79abbf8899a074b65f8dff4767ef8e878e82650de7b7165"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.18.8/terminalops_0.18.8_darwin_amd64.tar.gz"
+      sha256 "b0d457eb566e221082b5312f8432f10694a100d1d81b123e05218bfdf5372367"
     end
   end
 
@@ -24,6 +24,11 @@ class Terminalops < Formula
 
   def install
     if build.head?
+    # Sync migrations for dvt and nvp embedding before building
+    system "sh", "-c", "if [ -d cmd/dvt/migrations ]; then rm -rf cmd/dvt/migrations; fi"
+    system "cp", "-r", "db/migrations", "cmd/dvt/migrations"
+    system "sh", "-c", "if [ -d cmd/nvp/migrations ]; then rm -rf cmd/nvp/migrations; fi"
+    system "cp", "-r", "db/migrations", "cmd/nvp/migrations"
       system "go", "build",
              "-ldflags", "-s -w -X main.Version=HEAD -X main.Commit=#{`git rev-parse --short HEAD`.strip} -X main.BuildTime=#{Time.now.utc.iso8601}",
              "-o", bin/"dvt",
