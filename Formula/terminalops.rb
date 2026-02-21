@@ -4,17 +4,17 @@
 class Terminalops < Formula
   desc "TerminalOps (dvt) - DevOps-style terminal configuration management"
   homepage "https://github.com/rmkohlman/devopsmaestro"
-  version "0.18.16"
+  version "0.18.17"
   license "GPL-3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.18.16/terminalops_0.18.16_darwin_arm64.tar.gz"
-      sha256 "569ea4f94c128d17fb333ffd6b02b460ac65095ad493c2cc689f0eb262b9104a"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.18.17/terminalops_0.18.17_darwin_arm64.tar.gz"
+      sha256 "a4ba5fb69bf4e1366b4bd2e0a1c48af7b174797d25153b0ed6327852d151eb8e"
     end
     on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.18.16/terminalops_0.18.16_darwin_amd64.tar.gz"
-      sha256 "ac20b08431afb5b6429c144ab0b0353bea36c82104edb65df3aade4e6df33a13"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.18.17/terminalops_0.18.17_darwin_amd64.tar.gz"
+      sha256 "8ca786d99d86e85ad560c7e219d972f2fe7b429c07cf031c8bd292bd5cbc3918"
     end
   end
 
