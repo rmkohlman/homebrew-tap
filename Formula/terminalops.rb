@@ -10,11 +10,11 @@ class Terminalops < Formula
   on_macos do
     on_arm do
       url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.20.0/terminalops_0.20.0_darwin_arm64.tar.gz"
-      sha256 "8735dc4bf8480458aba6dd65492409f4601ed5693c10168e5e69538561da1e11"
+      sha256 "272fc753773ecb385d5a0f8157d6da89264a0ada7ec31382645b939f25405461"
     end
     on_intel do
       url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.20.0/terminalops_0.20.0_darwin_amd64.tar.gz"
-      sha256 "d942533a788016b9180f8a43677e6518aca82fca9656cf34a13c23e99ddc6e2a"
+      sha256 "3930f13d3299fb894aed0b72177b1ce6b43b6648e72d16f74a38cd3b8aa9d60f"
     end
   end
 

@@ -10,11 +10,11 @@ class Devopsmaestro < Formula
   on_macos do
     on_arm do
       url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.20.0/devopsmaestro_0.20.0_darwin_arm64.tar.gz"
-      sha256 "41fecbdf4fd2458f552def6753fa5396e50fcd25ceb6c099f927ddf31fb62864"
+      sha256 "1cedd96d1b2af82de6e8a81676eea03a7f6986291ee9e647d4ccdad5802168df"
     end
     on_intel do
       url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.20.0/devopsmaestro_0.20.0_darwin_amd64.tar.gz"
-      sha256 "c48f5a156ab23a47dea301fd53ad3eba830d442ea011af28a7b75ad13bd2cc52"
+      sha256 "e03fc5ccf7cfcfb7beb8b7b8ce921a331fc0dccc7a857b862ce9df14333d0143"
     end
   end
 

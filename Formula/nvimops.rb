@@ -10,22 +10,22 @@ class Nvimops < Formula
   on_macos do
     on_arm do
       url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.20.0/nvp_0.20.0_darwin_arm64.tar.gz"
-      sha256 "daebd781216f7ee7d99868a4c77bcffc23f819039128eab59dcf3e4c38313e94"
+      sha256 "208536425df41d53b218a05b4d118ee5dfabda99c1b4fbaf183188f3bef77438"
     end
     on_intel do
       url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.20.0/nvp_0.20.0_darwin_amd64.tar.gz"
-      sha256 "291e6a3dd72e99c1ec12c08747daa812e9c89d97b9cac5b0a7ff87c6b5cfb4da"
+      sha256 "ea9bb28c391081a199f303cd9624a5a9d397c837ec86771b2134dc4b40df3605"
     end
   end
 
   on_linux do
     on_arm do
       url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.20.0/nvp_0.20.0_linux_arm64.tar.gz"
-      sha256 "28cd2c31b92e42acbd065e1490dd7b6370026f3844c1ff6b41bdcc7c4d5b3e20"
+      sha256 "1eb88254cbb8130d42ccd5807f560d364839cf3add88038948171e48db7f66b4"
     end
     on_intel do
       url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.20.0/nvp_0.20.0_linux_amd64.tar.gz"
-      sha256 "fdf2014198722a2e3705a514dd0d07779b146876c3fcd83d93138d825b660095"
+      sha256 "95719b94def8ed90fddedb474dafdae502c3778e85c6ccea9dd99ef5c7946b5d"
     end
   end
 
