@@ -5,12 +5,12 @@
 class Maestrovault < Formula
   desc "MaestroVault — a macOS-first, developer-focused secrets management tool with CLI, TUI, and vim motions"
   homepage "https://github.com/rmkohlman/MaestroVault"
-  version "0.7.1"
+  version "0.7.2"
   license "Apache-2.0"
   depends_on :macos
 
-  url "https://github.com/rmkohlman/MaestroVault/releases/download/v0.7.1/mav_0.7.1_darwin_all.tar.gz"
-  sha256 "92f0e36e1ba6e15f3e9ffbfc9c9e9c09cc7f00bc0a24a580c7a7b61c05a980ea"
+  url "https://github.com/rmkohlman/MaestroVault/releases/download/v0.7.2/mav_0.7.2_darwin_all.tar.gz"
+  sha256 "14fc41a3aee19dcb0dfbb190b3351598a58b7c3d85c0a0905e444e000d0dc6a2"
 
   define_method(:install) do
     bin.install "mav"
