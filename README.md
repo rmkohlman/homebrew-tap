@@ -4,10 +4,13 @@ This is the official Homebrew tap for [DevOpsMaestro](https://github.com/rmkohlm
 
 ## Available Formulas
 
-| Formula | Binary | Description | Version |
-|---------|--------|-------------|---------|
-| **devopsmaestro** | `dvm` | kubectl-style CLI for containerized dev environments | 0.3.3 |
-| **nvimops** | `nvp` | DevOps-style Neovim plugin and theme manager | 0.5.0 |
+| Formula | Binary | Description |
+|---------|--------|-------------|
+| **devopsmaestro** | `dvm` | kubectl-style CLI for containerized dev environments |
+| **nvimops** | `nvp` | Standalone Neovim plugin and theme manager |
+| **terminalops** | `dvt` | Terminal prompt and configuration management |
+
+> Versions are auto-managed by GoReleaser on each tagged release.
 
 ## Installation
 
@@ -21,12 +24,33 @@ brew install rmkohlman/tap/devopsmaestro
 # Install NvimOps (nvp) - Neovim plugin/theme management
 brew install rmkohlman/tap/nvimops
 
+# Install Terminal Operations (dvt)
+brew install rmkohlman/tap/terminalops
+
 # Verify installations
 dvm version
 nvp version
+dvt version
 ```
 
 ## Quick Start
+
+### DevOpsMaestro (dvm) - Workspace Manager
+
+```bash
+# Initialize dvm
+dvm admin init
+
+# Create organizational hierarchy
+dvm create ecosystem mycompany
+dvm create domain mycompany/backend
+dvm create app mycompany/backend/api-service
+dvm create workspace mycompany/backend/api-service/dev
+
+# Build and attach to workspace
+dvm build
+dvm attach
+```
 
 ### NvimOps (nvp) - Neovim Plugin & Theme Manager
 
@@ -48,25 +72,22 @@ nvp generate
 # Files are created in ~/.config/nvim/lua/
 ```
 
-### DevOpsMaestro (dvm) - Workspace Manager
+### TerminalOps (dvt) - Terminal Prompt Manager
 
 ```bash
-# Initialize dvm
-dvm admin init
-
-# Create a workspace from current directory
-dvm create project myproject --from-cwd
-
-# List workspaces
-dvm get workspaces
+# Terminal prompt management
+dvt prompt list
+dvt prompt library list
+dvt prompt library install starship-default --use
 ```
 
 ## Upgrading
 
 ```bash
 # Upgrade specific formula
-brew upgrade rmkohlman/tap/nvimops
 brew upgrade rmkohlman/tap/devopsmaestro
+brew upgrade rmkohlman/tap/nvimops
+brew upgrade rmkohlman/tap/terminalops
 
 # Or upgrade all packages
 brew upgrade
@@ -84,12 +105,13 @@ source ~/.zshrc
 source ~/.bashrc
 ```
 
+For detailed setup instructions, see the [Shell Completion Guide](https://rmkohlman.github.io/devopsmaestro/configuration/shell-completion/).
+
 ## Documentation
 
-- [DevOpsMaestro Documentation](https://github.com/rmkohlman/devopsmaestro#readme)
+- [DevOpsMaestro Documentation](https://rmkohlman.github.io/devopsmaestro/)
 - [Release Notes](https://github.com/rmkohlman/devopsmaestro/releases)
-- [Shell Completion Guide](https://github.com/rmkohlman/devopsmaestro/blob/main/docs/SHELL_COMPLETION.md)
-- [NvimOps Test Plan](https://github.com/rmkohlman/devopsmaestro/blob/main/NVIMOPS_TEST_PLAN.md)
+- [Shell Completion Guide](https://rmkohlman.github.io/devopsmaestro/configuration/shell-completion/)
 
 ## Support
 
