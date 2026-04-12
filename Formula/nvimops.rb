@@ -4,28 +4,28 @@
 class Nvimops < Formula
   desc "NvimOps (nvp) - DevOps-style Neovim plugin and theme manager"
   homepage "https://github.com/rmkohlman/devopsmaestro"
-  version "0.85.0"
+  version "0.85.1"
   license "GPL-3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.85.0/nvp_0.85.0_darwin_arm64.tar.gz"
-      sha256 "98d1c35c8eb166a4493442a5aec1a2d768b4186743114b8f494da7a8b7218fe3"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.85.1/nvp_0.85.1_darwin_arm64.tar.gz"
+      sha256 "7a2f4232a4f727b416b6613a0a4a97246d5d779d8dba8a0639c9235ce3464d32"
     end
     on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.85.0/nvp_0.85.0_darwin_amd64.tar.gz"
-      sha256 "956bb69dc3c541031e776dbed8afadcf8abc4a6ce8c1c833720c612111b5095a"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.85.1/nvp_0.85.1_darwin_amd64.tar.gz"
+      sha256 "ea12f78d894f733a6961def79713486ec5b37487fabed51e4ced041d1e051e6b"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.85.0/nvp_0.85.0_linux_arm64.tar.gz"
-      sha256 "e49cefd257fb9b82be13c9cb46fed9a60f957cf440e01caf18483d72eb8189a4"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.85.1/nvp_0.85.1_linux_arm64.tar.gz"
+      sha256 "9939bce68dc08de72d8531f74cc495aaa0bb1c01e49006946adea57476808774"
     end
     on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.85.0/nvp_0.85.0_linux_amd64.tar.gz"
-      sha256 "7e1f56e8ef7a07a22344fa93d72599b272efea62a566fb891fc76ab694bcd5b7"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.85.1/nvp_0.85.1_linux_amd64.tar.gz"
+      sha256 "88c77dfabc3dad1bbbec659e9755dd603845a9f0341a738a57f76f12ffbbeb79"
     end
   end
 
