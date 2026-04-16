@@ -4,17 +4,17 @@
 class Devopsmaestro < Formula
   desc "DevOpsMaestro (dvm) - kubectl-style CLI for containerized dev environments"
   homepage "https://github.com/rmkohlman/devopsmaestro"
-  version "0.99.2"
+  version "0.99.3"
   license "GPL-3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.99.2/devopsmaestro_0.99.2_darwin_arm64.tar.gz"
-      sha256 "60467c340d162f2d2ed9b1f5d334e206a3785498d7b7a736911c0e92a366907f"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.99.3/devopsmaestro_0.99.3_darwin_arm64.tar.gz"
+      sha256 "7bb54fd2bd1fad5bd51e084dfbd72cd86d86ed8bd716aba19f656c092ec1e45d"
     end
     on_intel do
-      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.99.2/devopsmaestro_0.99.2_darwin_amd64.tar.gz"
-      sha256 "991e98aedd7bcd2a98276dc1483e442a2d3caa237f97f9b3b2ff20f16a406ea9"
+      url "https://github.com/rmkohlman/devopsmaestro/releases/download/v0.99.3/devopsmaestro_0.99.3_darwin_amd64.tar.gz"
+      sha256 "6bb42691727362828ef7893f74364f762e204dc26db23297730738c31fe617a9"
     end
   end
 
